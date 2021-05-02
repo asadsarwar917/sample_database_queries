@@ -1,0 +1,3 @@
+SELECT c.`customerName`,COUNT(o.`orderNumber`) AS NumberOfOrdersPlaced,SUM(od.`priceEach`*od.`quantityOrdered`) AS TotalPaid FROM classicmodels.`customers` c JOIN (classicmodels.`orders` o JOIN classicmodels.`orderdetails` od USING(orderNumber)) USING(customerNumber) GROUP BY customerNumber;
+SELECT c.`customerName`,o.`orderNumber`,od.`priceEach` FROM classicmodels.`customers` c JOIN (classicmodels.`orders` o JOIN classicmodels.`orderdetails` od USING(orderNumber)) USING(customerNumber); GROUP BY customerNumber;
+SELECT c.`customerName`,COUNT(o.`orderNumber`),od.`priceEach`*od.`quantityOrdered` FROM classicmodels.`customers` c JOIN (classicmodels.`orders` o JOIN classicmodels.`orderdetails` od USING(orderNumber)) USING(customerNumber) GROUP BY orderNumber,customerNumber;
